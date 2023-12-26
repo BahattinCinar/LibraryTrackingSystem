@@ -44,7 +44,7 @@ namespace LibraryTrackingSystem
                 listView1.Items.Add(bookItem);
             }
 
-            Form2.cmnd = new SqlCommand("SELECT * FROM takenBook", Form2.conn);
+            Form2.cmnd = new SqlCommand("SELECT * FROM userData LEFT JOIN takenData on userData.bookName = bookData.bookName", Form2.conn);
             
             while (read.Read())
             {

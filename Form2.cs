@@ -28,12 +28,13 @@ namespace LibraryTrackingSystem
             groupBox1.Text = "Welcome " + Form1.userName;
             label1.Text = "Add new book";
             label2.Text = "List all records";
+            label3.Text = "Book lending";
             pictureBox1.ImageLocation = @"C:\Users\ayten\OneDrive\Masaüstü\ABDCJSH\C#\Workspace\LibraryTrackingSystem\images\return-ico.png";
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            bookDB();
         }
 
         private void bookDB()
@@ -115,14 +116,28 @@ namespace LibraryTrackingSystem
 
         private void label2_Click(object sender, EventArgs e)
         {
-            bookDB();
+            Form3 form3 = new Form3();
+            this.Hide();
+            form3.ShowDialog();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form1.form3.ShowDialog();
+            string
+                borrowName = Interaction.InputBox("Borrow's Name", "Book Lending", "", 500, 500),
+                borrowPhone = Interaction.InputBox("Borrow's Phone", "Book Lending", "", 500, 500),
+                borrowAdress = Interaction.InputBox("Borrow's Phone", "Book Lending", "", 500, 500),
+                borrowBook = Interaction.InputBox("Borrowed Book Name", "Book Lending", "", 500, 500);
+
+            
+
+            if (borrowBook != )
+            {
+
+            }
         }
+
+        
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -131,8 +146,9 @@ namespace LibraryTrackingSystem
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            Form1 form = new Form1();
             this.Hide();
-            Form1.form1.ShowDialog();
+            form.ShowDialog();
         }
     }
 }
