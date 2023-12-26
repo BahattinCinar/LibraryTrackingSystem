@@ -49,52 +49,52 @@ namespace LibraryTrackingSystem
 
             if (bookClass == "computer" || bookClass == "informatics and general studies" || bookClass == "informatics" || bookClass == "general studies")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName,bookClass,id) VALUES ('" + bookName + bookClass + 000 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 000 + "')", conn);
             }
             
             else if (bookClass == "Philosophy" || bookClass == "Philosophy and psychology" || bookClass == "psychology")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName,bookClass,id) VALUES ('" + bookName + bookClass + 100 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 100 + "')", conn);
             }
 
             else if(bookClass == "Religion")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName,bookClass,id) VALUES ('" + bookName + bookClass + 200 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 200 + "')", conn);
             }
 
             else if( bookClass == "social sciences")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName, bookClass, id) VALUES('" + bookName + bookClass + 300 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 300 + "')", conn);
             }
 
             else if ( bookClass == "language")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName, bookClass, id) VALUES('" + bookName + bookClass + 400 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 400 + "')", conn);
             }
 
             else if(bookClass == "fundamental sciences")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName, bookClass, id) VALUES('" + bookName + bookClass + 500 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 500 + "')", conn);
             }
 
             else if(bookClass == "technology")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName, bookClass, id) VALUES('" + bookName + bookClass + 600 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 600 + "')", conn);
             }
 
             else if(bookClass == "art and creativity" || bookClass == "art" || bookClass == "creativity")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName, bookClass, id) VALUES('" + bookName + bookClass + 700 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 700 + "')", conn);
             }
 
             else if(bookClass == "literature")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName, bookClass, id) VALUES('" + bookName + bookClass + 800 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 800 + "')", conn);
             }
 
             else if(bookClass == "history and geography" || bookClass == "history" || bookClass == "geography")
             {
-                cmnd = new SqlCommand("cmnd INTO bookData(bookName, bookClass, id) VALUES('" + bookName + bookClass + 900 + "')");
+                cmnd = new SqlCommand("INSERT INTO bookData (bookName,bookClass,id) VALUES('" + bookName + "','" + bookClass + "','" + 900 + "')",conn);
             }
 
             else
@@ -106,9 +106,11 @@ namespace LibraryTrackingSystem
                 goto bookClassReturn;
             }
 
+            cmnd.ExecuteNonQuery();
+            conn.Close();
             MessageBox.Show("Book sucsessfully added");
 
-            conn.Close();
+            
         }
 
         private void label2_Click(object sender, EventArgs e)

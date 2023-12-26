@@ -38,9 +38,9 @@ namespace LibraryTrackingSystem
             {
                 ListViewItem bookItem = new ListViewItem();
 
-                bookItem.Text = read["id"].ToString();
+                bookItem.Text = read["bookName"].ToString();
                 bookItem.SubItems.Add(read["bookClass"].ToString());
-                bookItem.SubItems.Add(read["bookName"].ToString());
+                bookItem.SubItems.Add(read["id"].ToString());
                 listView1.Items.Add(bookItem);
             }
 
@@ -60,9 +60,8 @@ namespace LibraryTrackingSystem
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
             this.Hide();
-            form2.ShowDialog();
+            Form1.form2.ShowDialog();
         }
     }
 }
