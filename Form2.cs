@@ -123,21 +123,19 @@ namespace LibraryTrackingSystem
 
         private void label3_Click(object sender, EventArgs e)
         {
+            conn.Open();
             string
                 borrowName = Interaction.InputBox("Borrow's Name", "Book Lending", "", 500, 500),
                 borrowPhone = Interaction.InputBox("Borrow's Phone", "Book Lending", "", 500, 500),
                 borrowAdress = Interaction.InputBox("Borrow's Phone", "Book Lending", "", 500, 500),
                 borrowBook = Interaction.InputBox("Borrowed Book Name", "Book Lending", "", 500, 500);
 
-            
+            cmnd = new SqlCommand("INSERT INTO userData (userName,userPhone,userAdress,bookName) VALUES ('" + borrowName + "','" + borrowPhone + "','" + borrowAdress + "','" + borrowBook + "')", conn);
 
-            if (borrowBook != )
-            {
-
-            }
+            cmnd.ExecuteNonQuery();
+            conn.Close();
+            MessageBox.Show("Sucsesfully Borrowed");
         }
-
-        
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
