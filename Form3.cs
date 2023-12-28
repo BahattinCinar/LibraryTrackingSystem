@@ -24,7 +24,7 @@ namespace LibraryTrackingSystem
             pictureBox1.ImageLocation = @"C:\Users\ayten\OneDrive\Masaüstü\ABDCJSH\C#\Workspace\LibraryTrackingSystem\images\return-ico.png";
 
             dbView();
-            
+            landerView();
         }
 
         private void dbView()
@@ -44,18 +44,25 @@ namespace LibraryTrackingSystem
                 listView1.Items.Add(bookItem);
             }
 
-            /*SqlCommand land = new SqlCommand("SELECT bookName FROM bookData INNER JOIN (SELECT userName FROM userData) ON bookName.bookData = bookName.userData", Form2.conn);
+            Form2.conn.Close();
+        }
 
-            
-            while (readLand.Read())
+        private void landerView()
+        {
+            Form2.conn.Open();
+            SqlCommand readerDB = new SqlCommand("SELECT * FROM userData",Form2.conn);
+
+            SqlDataReader reader = readerDB.ExecuteReader();
+
+            while(reader.Read())
             {
-                ListViewItem takenBook = new ListViewItem();
+                ListViewItem readerItem = new ListViewItem();
 
-                takenBook.Text = readLand["userName"].ToString();
-                takenBook.SubItems.Add(readLand["bookName"].ToString());
-                listView2.Items.Add(takenBook);
+                readerItem.Text = reader["userName"].ToString();
+                readerItem.SubItems.Add(reader["bookName"].ToString());
+                listView2.Items.Add(readerItem);
             }
-            */
+
             Form2.conn.Close();
         }
 

@@ -29,6 +29,8 @@ namespace LibraryTrackingSystem
             label1.Text = "Add new book";
             label2.Text = "List all records";
             label3.Text = "Book lending";
+            label4.Text = "Delete book Record";
+            label5.Text = "Book regive";
             pictureBox1.ImageLocation = @"C:\Users\ayten\OneDrive\Masaüstü\ABDCJSH\C#\Workspace\LibraryTrackingSystem\images\return-ico.png";
         }
 
@@ -100,7 +102,7 @@ namespace LibraryTrackingSystem
 
             else
             {
-                MessageBox.Show("Undefined Book Class please re enter");
+                MessageBox.Show("Undefined Book Class please re-enter");
 
                 bookClass = Interaction.InputBox("");
 
@@ -130,11 +132,44 @@ namespace LibraryTrackingSystem
                 borrowAdress = Interaction.InputBox("Borrow's Phone", "Book Lending", "", 500, 500),
                 borrowBook = Interaction.InputBox("Borrowed Book Name", "Book Lending", "", 500, 500);
 
-            cmnd = new SqlCommand("INSERT INTO userData (userName,userPhone,userAdress,bookName) VALUES ('" + borrowName + "','" + borrowPhone + "','" + borrowAdress + "','" + borrowBook + "')", conn);
+            if(borrowName == "" || borrowPhone == "" || borrowAdress == "" || borrowBook == "")
+            {
+                MessageBox.Show("Missing borrower's name. Please enter name.");
+                borrowName = Interaction.InputBox("Borrow's Name", "Book Lending", "", 500, 500);
+            }
+            else if (borrowPhone == "")
+            {
+                MessageBox.Show("Missing borrower's phone. Please enter phone.");
+                borrowPhone = Interaction.InputBox("Borrow's Phone", "Book Lending", "", 500, 500);
+            }
+            else if (borrowAdress == "")
+            {
+                MessageBox.Show("Missing borrower's adress. Please enter adress.");
+                borrowAdress = Interaction.InputBox("Borrow's Phone", "Book Lending", "", 500, 500);
+            }
+            else if (borrowBook == "")
+            {
+                MessageBox.Show("Missing borrowered book. Please enter the book.");
+                borrowBook = Interaction.InputBox("Borrowed Book Name", "Book Lending", "", 500, 500);
+            }
+            else
+            {
+                cmnd = new SqlCommand("INSERT INTO userData (userName,userPhone,userAdress,bookName) VALUES('"+borrowName+"','"+borrowPhone+"','"+borrowAdress+"','"+borrowBook+"')", conn);
+            }
 
             cmnd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Sucsesfully Borrowed");
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
